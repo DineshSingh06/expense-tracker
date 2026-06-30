@@ -9,6 +9,7 @@ The application allows users to add expenses, view saved records, and calculate 
 - Add a new expense
 - View all recorded expenses
 - Calculate total expenses
+- Validate expense amount input
 - Store data using file handling
 
 ## Concepts Used
