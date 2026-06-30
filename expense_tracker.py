@@ -1,3 +1,28 @@
+def add_expense():
+    category=input("Enter category: ")
+    amount=input("Enter amount: ")
+    with open("expenses.txt","a")as f:
+        f.write(f"{category},{amount}\n")
+    print("Expense added successfully!")
+
+def view_expenses():
+    with open("expenses.txt")as f:
+        expenses=f.readlines()
+    
+    if not expenses:
+        print("No expenses recorded")
+        return  
+    
+    print("\n=====Expenses=====")
+    for line in expenses:
+        category,amount=line.strip().split(",")
+        print(f"Category: {category}")
+        print(f"Amount: ₹{amount}\n")
+        
+
+def view_total():
+    pass
+
 while True:
     print("=========================")
     print("     Expense Tracker     ")
@@ -11,13 +36,13 @@ while True:
     choice = input("Enter your choice: ")
 
     if choice == "1":
-        print("Add Expense selected.")
+        add_expense()
 
     elif choice == "2":
-        print("View Expenses selected.")
+        view_expenses()
 
     elif choice == "3":
-        print("View Total Expense selected.")
+        view_total()
 
     elif choice == "4":
         print("Thank you for using Expense Tracker!")
