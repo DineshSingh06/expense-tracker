@@ -1,6 +1,18 @@
 def add_expense():
     category = input("Enter category: ")
-    amount = input("Enter amount: ")
+    while True:
+        try:
+            amount = int(input("Enter amount: "))
+
+            if amount<=0:
+                print("Amount must be greater than 0.")
+                continue
+
+            break
+
+        except ValueError:
+            print("Enter a valid amount")
+
     with open("expenses.txt","a")as f:
         f.write(f"{category},{amount}\n")
     print("Expense added successfully!")
