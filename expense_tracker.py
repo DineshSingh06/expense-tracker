@@ -1,27 +1,36 @@
 def add_expense():
-    category=input("Enter category: ")
-    amount=input("Enter amount: ")
+    category = input("Enter category: ")
+    amount = input("Enter amount: ")
     with open("expenses.txt","a")as f:
         f.write(f"{category},{amount}\n")
     print("Expense added successfully!")
 
 def view_expenses():
     with open("expenses.txt")as f:
-        expenses=f.readlines()
+        expenses = f.readlines()
     
     if not expenses:
-        print("No expenses recorded")
+        print("\nNo expenses recorded.")
         return  
     
-    print("\n=====Expenses=====")
+    print("\n=====All Expenses=====")
     for line in expenses:
-        category,amount=line.strip().split(",")
+        category, amount = line.strip().split(",")
         print(f"Category: {category}")
         print(f"Amount: ₹{amount}\n")
         
 
 def view_total():
-    pass
+    total = 0
+    with open("expenses.txt")as f:
+        expenses = f.readlines()
+    if not expenses:
+        print("\nNo expenses recorded.")
+        return
+    for line in expenses:
+        category, amount = line.strip().split(",")
+        total += int(amount)
+    print(f"Total Expense = ₹{total}")
 
 while True:
     print("=========================")
